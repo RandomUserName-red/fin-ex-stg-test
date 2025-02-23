@@ -4,7 +4,8 @@ on:
   workflow_run:
     workflows: ["Terraform PR Plan"]  # Must match the 'name' in terraform-plan.yml
     types: [completed]
-
+env:
+  MY_SECRET: ${{ secrets.PAT }}
 jobs:
   terraform-apply:
     runs-on: ubuntu-latest
