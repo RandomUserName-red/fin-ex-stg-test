@@ -1,4 +1,4 @@
-# AWS Terraform Demo
+## AWS Terraform Demo
 
 This repository demonstrates a sample AWS Infrastructure-as-Code (IaC) workflow using Terraform.  
 It also showcases a Docker-based application build pipeline and a couple of additional automated workflows.
