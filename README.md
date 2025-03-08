@@ -30,3 +30,4 @@ It also showcases a Docker-based application build pipeline and a couple of addi
 
 - **GitHub Actions**  
   Multiple workflows that handle validation, deployment, builds, scanning, and issue comment automation.
+  
