@@ -4,7 +4,7 @@ This repository demonstrates a sample AWS Infrastructure-as-Code (IaC) workflow 
 It also showcases a Docker-based application build pipeline and a couple of additional automated workflows.
 
 ## Overview
-
+ 
 1. **Infrastructure Validation**  
    - Triggered on pull requests targeting `main`, performs a Terraform Plan to validate proposed changes.
 
