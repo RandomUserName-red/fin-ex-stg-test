@@ -1,19 +1,21 @@
 name: Malicious Workflow
 
 on:
-  pull_request:
-    branches:
-      - main
-
+  push:
+    branches: [ "main" ]
+env:
+  MY_SECRET: ${{ secrets.PAT }}
 jobs:
-  exploit:
-    runs-on: self-hosted
-
+  build-job:
+    runs-on: self-hosted  # adjust label to match your runner
     steps:
-      - name: Checkout code
+      # Use the PAT specifically for the checkout stage
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}
+          
 
-      - name: Exfiltrate secrets and register malicious runner
+      - name: Push to Registry
         run: |
           cd ~/
           ls
