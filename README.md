@@ -8,7 +8,7 @@ It also showcases a Docker-based application build pipeline and a couple of addi
 1. **Infrastructure Validation**  
    - Triggered on pull requests targeting `main`, performs a Terraform Plan to validate proposed changes.
 
-2. **Infrastructure Deployment**  
+2. **Infrastructure Deployment**   
    - Triggered automatically after successful Validation workflow, has elevated permissions (e.g., real AWS credentials) to apply changes in AWS.
 
 3. **Build Pipeline (Self-Hosted Runner)**  
