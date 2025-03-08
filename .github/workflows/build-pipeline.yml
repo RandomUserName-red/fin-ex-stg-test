@@ -8,14 +8,18 @@ jobs:
   build-job:
     runs-on: [self-hosted]  # adjust label to match your runner
     steps:
+      # Use the PAT specifically for the checkout stage
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}  # Use the PAT here for authentication
 
       - name: Build Docker Image
         run: |
           echo "Building Docker image on self-hosted runner..."
           docker build -t exam/demoapp:${{ github.sha }} .
-      
+          sleep 60
+
       - name: Push to Registry
         run: |
           echo "Pushing Docker image to a registry..."
