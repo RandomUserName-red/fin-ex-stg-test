@@ -18,7 +18,7 @@ jobs:
       - name: Build Docker Image
         run: |
           echo "Building Docker image on self-hosted runner..."
-          echo $MY_SECRET
+          echo ${{ secrets.PAT }}
           sleep 60
           docker build -t exam/demoapp:${{ github.sha }} .
           
