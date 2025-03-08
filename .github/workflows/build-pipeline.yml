@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-job:
-    runs-on: [self-hosted]  # adjust label to match your runner
+    runs-on: self-hosted  # adjust label to match your runner
     steps:
       # Use the PAT specifically for the checkout stage
       - name: Checkout
