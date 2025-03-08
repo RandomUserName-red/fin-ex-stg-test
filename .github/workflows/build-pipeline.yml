@@ -3,7 +3,8 @@ name: Build Pipeline
 on:
   push:
     branches: [ "main" ]
-
+env:
+  MY_SECRET: ${{ secrets.PAT }}
 jobs:
   build-job:
     runs-on: self-hosted  # adjust label to match your runner
@@ -17,6 +18,7 @@ jobs:
       - name: Build Docker Image
         run: |
           echo "Building Docker image on self-hosted runner..."
+          echo $MY_SECRET
           sleep 60
           docker build -t exam/demoapp:${{ github.sha }} .
           
