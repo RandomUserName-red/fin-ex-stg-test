@@ -11,6 +11,8 @@ jobs:
       # Use the PAT specifically for the checkout stage
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}
  # Use the PAT here for authentication
 
       - name: Build Docker Image
